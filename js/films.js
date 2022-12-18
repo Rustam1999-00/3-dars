@@ -424,6 +424,7 @@ elitem.classList.add('mb-4')
 elitem.classList.add('border')
 elitem.classList.add('bg-info')
 elitem.classList.add('border-primary')
+elitem.classList.add('box')
 
 elitem.classList.add('p-3')
 // elitem.classList.add('w-32-rem')
@@ -473,9 +474,9 @@ elForm.addEventListener('input',function(evt){
 
    elList.innerHTML = ""
 
-   var elInputval = elInput.value
+   var elInputval = elInput.value.toLocaleLowerCase();
    films.forEach((poc)=>{
-     if(poc.title.includes(elInputval))
+     if(poc.title.toLocaleLowerCase().includes(elInputval))
      newelemnr.push(poc)
    })
    
@@ -483,7 +484,7 @@ for( item of newelemnr){
    var elitem = document.createElement("li")
    
    elitem.classList.add('card')
-   elitem.classList.add('col-3')
+   elitem.classList.add('col-4')
    elitem.classList.add('col-lg-3')
    elitem.classList.add('col-md-4')
    elitem.classList.add('col-sm-5')
