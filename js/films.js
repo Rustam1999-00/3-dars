@@ -408,6 +408,115 @@ var films = [
 var elForm = document.querySelector('.js-form')
 var elInput = document.querySelector('.js-input')
 var elList = document.querySelector('.js-list')
+var elSelect = document.querySelector('.js-select')
+
+var elSelect2 = document.querySelector('.js-select2')
+
+// select
+
+var sel = []
+
+films.forEach((filime)=>{
+  filime.genres.forEach((poper)=>{
+   sel.push(poper)
+  });
+  
+});
+   
+var dublecet = new Set(sel);
+
+
+dublecet.forEach((el)=>{
+   var eloption = document.createElement('option')
+   eloption.setAttribute("value",el);
+   eloption.textContent = el
+   
+   elSelect.appendChild(eloption)
+   
+   
+});
+
+
+newsel = []
+
+elSelect.addEventListener('change',function(){
+   elList.innerHTML = " "
+   newsel = []
+
+   if(elSelect.value == 'All'){
+      newsel = films
+   }
+
+
+   films.forEach((pop)=>{
+      pop.genres.forEach((puushte)=>{
+         if(elSelect.value == puushte){
+            newsel.push(pop)
+         }
+      })
+
+
+      
+   })
+
+   for( item of newsel ){
+      var elitem = document.createElement("li")
+      
+      elitem.classList.add('card')
+      elitem.classList.add('col-3')
+      elitem.classList.add('col-lg-3')
+      elitem.classList.add('col-md-4')
+      elitem.classList.add('col-sm-5')
+      elitem.classList.add('ms-5')
+      elitem.classList.add('mb-4')
+      elitem.classList.add('border')
+      elitem.classList.add('bg-info')
+      elitem.classList.add('border-primary')
+      elitem.classList.add('box')
+      
+      elitem.classList.add('p-3')
+      // elitem.classList.add('w-32-rem')
+      
+      elitem.classList.add('text-center')
+      
+      
+      // var id = document.createElement('h2')
+      // id.textContent = item.id
+      
+      var img = document.createElement('img')
+      img.src = item.poster
+      img.classList.add('mb-5')
+      img.classList.add('rounded')
+      
+      var names = document.createElement('h2')
+      names.textContent = item.title
+      
+      var text = document.createElement('h5')
+      text.textContent = item.genres
+      
+      var text1 = document.createElement('p')
+      text.textContent = item.overview
+      
+      
+      
+      // elitem.appendChild(id)
+      elitem.appendChild(img)
+      elitem.appendChild(names)
+      elitem.appendChild(text1)
+      elitem.appendChild(text)
+      
+      
+      elList.appendChild(elitem)
+      
+      
+      
+      
+      }
+
+});
+
+
+
 
 
 
@@ -432,17 +541,18 @@ elitem.classList.add('p-3')
 elitem.classList.add('text-center')
 
 
-var id = document.createElement('h2')
-id.textContent = item.id
+// var id = document.createElement('h2')
+// id.textContent = item.id
 
 var img = document.createElement('img')
 img.src = item.poster
 img.classList.add('mb-5')
+img.classList.add('rounded')
 
 var names = document.createElement('h2')
 names.textContent = item.title
 
-var text = document.createElement('p')
+var text = document.createElement('h5')
 text.textContent = item.genres
 
 var text1 = document.createElement('p')
@@ -450,7 +560,7 @@ text.textContent = item.overview
 
 
 
-elitem.appendChild(id)
+// elitem.appendChild(id)
 elitem.appendChild(img)
 elitem.appendChild(names)
 elitem.appendChild(text1)
@@ -479,6 +589,14 @@ elForm.addEventListener('input',function(evt){
      if(poc.title.toLocaleLowerCase().includes(elInputval))
      newelemnr.push(poc)
    })
+
+
+   // -----------------------------------------------------------
+
+
+
+
+   
    
 for( item of newelemnr){
    var elitem = document.createElement("li")
@@ -493,6 +611,8 @@ for( item of newelemnr){
    elitem.classList.add('border')
    elitem.classList.add('bg-info')
    elitem.classList.add('border-primary')
+   elitem.classList.add('hover')
+
    
    elitem.classList.add('p-3')
    // elitem.classList.add('w-32-rem')
@@ -510,11 +630,11 @@ for( item of newelemnr){
    var names = document.createElement('h2')
    names.textContent = item.title
    
-   var text = document.createElement('p')
-   text.textContent = item.genres
+   // var text = document.createElement('h2')
+   // text.textContent = item.genres
    
-   var text1 = document.createElement('p')
-   text.textContent = item.overview
+   // var text1 = document.createElement('b')
+   // text.textContent = item.overview
    
    
    
@@ -533,8 +653,180 @@ for( item of newelemnr){
    }
 
 
-})
+
+});
 
 
+// Sort
+
+var newsort = [];
+
+// elSelect2.addEventListener('change',function(){
+
+//    films.forEach((el)=>{
+//       sorte.push(el.title)
+//       sorte.sort(
+//          (a, b) =>
+//            a.title.toLowerCase().charCodeAt(0) -
+//            b.title.toLowerCase().charCodeAt(0)
+//        );
+
+//    });
+  
+
+// if(elSelect2.value == 'a-z'){
+//    films.forEach((el)=>{
+//       sorte.push(el.title)
+    
+//       sorte.sort(
+//          (a, b) =>
+//            a.title.toLowerCase().charCodeAt(0) -
+//            b.title.toLowerCase().charCodeAt(0)
+//        );
+
+//    })
+// }
+// if(elSelect2.value == 'z-a'){
+//    films.forEach((el)=>{
+//       sorte.push(el.title)
+//       sorte.sort(
+//          (a, b) =>
+//            a.title.toLowerCase().charCodeAt(0) -
+//            b.title.toLowerCase().charCodeAt(0)
+//        );
+//    })
+// }
 
 
+//    // for( item of sorte){
+//    //    var elitem = document.createElement("li")
+      
+//    //    elitem.classList.add('card')
+//    //    elitem.classList.add('col-3')
+//    //    elitem.classList.add('col-lg-3')
+//    //    elitem.classList.add('col-md-4')
+//    //    elitem.classList.add('col-sm-5')
+//    //    elitem.classList.add('ms-5')
+//    //    elitem.classList.add('mb-4')
+//    //    elitem.classList.add('border')
+//    //    elitem.classList.add('bg-info')
+//    //    elitem.classList.add('border-primary')
+//    //    elitem.classList.add('box')
+      
+//    //    elitem.classList.add('p-3')
+//    //    // elitem.classList.add('w-32-rem')
+      
+//    //    elitem.classList.add('text-center')
+      
+      
+//    //    // var id = document.createElement('h2')
+//    //    // id.textContent = item.id
+      
+//    //    var img = document.createElement('img')
+//    //    img.src = item.poster
+//    //    img.classList.add('mb-5')
+//    //    img.classList.add('rounded')
+      
+//    //    var names = document.createElement('h2')
+//    //    names.textContent = item.title
+      
+//    //    var text = document.createElement('h5')
+//    //    text.textContent = item.genres
+      
+//    //    var text1 = document.createElement('p')
+//    //    text.textContent = item.overview
+      
+      
+      
+//    //    // elitem.appendChild(id)
+//    //    elitem.appendChild(img)
+//    //    elitem.appendChild(names)
+//    //    elitem.appendChild(text1)
+//    //    elitem.appendChild(text)
+      
+      
+//    //    elList.appendChild(elitem)
+      
+      
+      
+      
+//    //    }
+
+//       console.log(sorte);
+// })
+
+elSelect2.addEventListener("change", function () {
+
+   elList.innerHTML= ""
+   newsort = [];
+  films.forEach((el) => {
+   newsort.push(el);
+   newsort.sort((a, b) => a.title.toUpperCase().charCodeAt(0) - b.title.toUpperCase().charCodeAt(0)
+    );
+  });
+ 
+
+  if (elSelect2.value === "a-z") {
+   newsort.sort((a, b) =>a.title.toUpperCase().charCodeAt(0) -b.title.toUpperCase().charCodeAt(0)
+    );
+  }
+  if (elSelect2.value === "z-a") {
+   newsort.sort((a, b) => b.title.toUpperCase().charCodeAt(0) - a.title.toUpperCase().charCodeAt(0)
+    );
+  }
+  for( item of newsort ){
+   var elitem = document.createElement("li")
+   
+   elitem.classList.add('card')
+   elitem.classList.add('col-3')
+   elitem.classList.add('col-lg-3')
+   elitem.classList.add('col-md-4')
+   elitem.classList.add('col-sm-5')
+   elitem.classList.add('ms-5')
+   elitem.classList.add('mb-4')
+   elitem.classList.add('border')
+   elitem.classList.add('bg-info')
+   elitem.classList.add('border-primary')
+   elitem.classList.add('box')
+   
+   elitem.classList.add('p-3')
+   // elitem.classList.add('w-32-rem')
+   
+   elitem.classList.add('text-center')
+   
+   
+   // var id = document.createElement('h2')
+   // id.textContent = item.id
+   
+   var img = document.createElement('img')
+   img.src = item.poster
+   img.classList.add('mb-5')
+   img.classList.add('rounded')
+   
+   var names = document.createElement('h2')
+   names.textContent = item.title
+   
+   var text = document.createElement('h5')
+   text.textContent = item.genres
+   
+   var text1 = document.createElement('p')
+   text.textContent = item.overview
+   
+   
+   
+   // elitem.appendChild(id)
+   elitem.appendChild(img)
+   elitem.appendChild(names)
+   elitem.appendChild(text1)
+   elitem.appendChild(text)
+   
+   
+   elList.appendChild(elitem)
+   
+   
+   
+   
+   }
+ console.log(item);
+});
+ 
