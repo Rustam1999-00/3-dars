@@ -470,7 +470,7 @@ elSelect.addEventListener('change',function(){
       elitem.classList.add('ms-5')
       elitem.classList.add('mb-4')
       elitem.classList.add('border')
-      elitem.classList.add('bg-info')
+      elitem.classList.add('bg-dark')
       elitem.classList.add('border-primary')
       elitem.classList.add('box')
       
@@ -531,7 +531,8 @@ elitem.classList.add('col-sm-5')
 elitem.classList.add('ms-5')
 elitem.classList.add('mb-4')
 elitem.classList.add('border')
-elitem.classList.add('bg-info')
+elitem.classList.add('bg-dark')
+elitem.classList.add('text-light')
 elitem.classList.add('border-primary')
 elitem.classList.add('box')
 
@@ -548,6 +549,7 @@ var img = document.createElement('img')
 img.src = item.poster
 img.classList.add('mb-5')
 img.classList.add('rounded')
+img.classList.add('hover')
 
 var names = document.createElement('h2')
 names.textContent = item.title
